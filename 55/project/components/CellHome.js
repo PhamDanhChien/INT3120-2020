@@ -11,11 +11,13 @@ export class CellHome extends React.Component {
                     onPress={this.props.Press}
                 >
 
-                    <Image
-                        resizeMode="stretch"
-                        source={this.props.img}
-                        style={styles.icon}
-                    />
+                    <View>
+                        <Image
+                            resizeMode="stretch"
+                            source={this.props.img}
+                            style={styles.icon}
+                        />
+                    </View>
 
                 </TouchableOpacity>
             </View>
@@ -41,16 +43,6 @@ const styles = StyleSheet.create({
         // backgroundColor: "blue",
         // borderWidth: 1,
 
-
-        // shadowRadius: 16.00,
-        // shadowColor: "red",
-        // shadowOffset: {
-        //     width: 0,
-        //     height: 2,
-        // },
-        // shadowOpacity: 0.25,
-        // shadowRadius: 3.84,
-
         // elevation: 5,
     },
 
@@ -61,15 +53,6 @@ const styles = StyleSheet.create({
 
         // borderTopRightRadius: 60,
         // borderBottomLeftRadius: 60,
-        // shadowColor: "red",
-        // shadowOffset: {
-        //     width: 0,
-        //     height: 2,
-        // },
-        // shadowOpacity: 0.25,
-        // shadowRadius: 3.84,
-
-        // elevation: 5,
 
     },
 

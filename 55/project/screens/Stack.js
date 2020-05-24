@@ -32,7 +32,7 @@ const Stack = createStackNavigator();
 
 class StackScreen extends React.Component {
     Reset = () => {
-        let cf = Alert.alert(
+        Alert.alert(
             'Đặt lại tất cả bài học',
             'Bạn có muốn đặt lại tất cả các câu hỏi đã học không, sau khi đặt lại không thể khôi phục!',
             [
@@ -140,6 +140,12 @@ class StackScreen extends React.Component {
                     component={Bien_bao}
                     options={{
                         title: "Biển báo giao thông",
+                        headerRight: () => (
+                            <TouchableOpacity
+                                onPress={() => Alert.alert("Chưa tìm kiếm được đâu :))")}>
+                                <Icon style={{ marginRight: 10, color: 'white' }} size={30} name='magnify' />
+                            </TouchableOpacity>
+                        )
                     }}
                 />
 

@@ -1,10 +1,13 @@
 import * as React from 'react';
-import { View, Text, StyleSheet, Image } from 'react-native';
+import { Text, View, StyleSheet } from 'react-native';
+import { ScrollView } from 'react-native-gesture-handler';
+
+import Header from '../components/Header';
 
 
 const dataHelp = {
     Text1: 'Đây là ứng dụng giúp bạn học lí thuyết để chuẩn bị cho kì thi sát hạch lí thuyết lái xe chỉ trong 3 ngày.\n' +
-        'Vui lòng thực hiện các bước dưới đây để đạt kết quả thi tốt nhất và rut ngắn thời gian ôn luyện!',
+        'Vui lòng thực hiện các bước dưới đây để đạt kết quả thi tốt nhất và rút ngắn thời gian ôn luyện!',
 
     Text2: '1. Ngày đầu tiên bạn nên dành 8 tiếng để học hết tất cả các loại biển báo hay gặp. Tập trung vào các loại ' +
         'biển báo cấm, biển báo hiệu lệnh, biển báo chỉ dẫn, biển báo nguy hiểm.',
@@ -23,14 +26,21 @@ const dataHelp = {
 export default class Help extends React.Component {
     render() {
         return (
+
             <View style={styles.container}>
-                <Text style={styles.text1}>{dataHelp.Text1}</Text>
-                <Text style={styles.text2}>{dataHelp.Text2}</Text>
-                <Text style={styles.text2}>{dataHelp.Text3}</Text>
-                <Text style={styles.text2}>{dataHelp.Text4}</Text>
-                <Text style={styles.text2}>{dataHelp.Text5}</Text>
-                <Text style={styles.text3}>{dataHelp.Text6}</Text>
+
+                <Header title='Hướng dẫn sử dụng' />
+
+                <ScrollView>
+                    <Text style={styles.text1}>{dataHelp.Text1}</Text>
+                    <Text style={styles.text2}>{dataHelp.Text2}</Text>
+                    <Text style={styles.text2}>{dataHelp.Text3}</Text>
+                    <Text style={styles.text2}>{dataHelp.Text4}</Text>
+                    <Text style={styles.text2}>{dataHelp.Text5}</Text>
+                    <Text style={styles.text3}>{dataHelp.Text6}</Text>
+                </ScrollView>
             </View>
+
         )
     }
 }

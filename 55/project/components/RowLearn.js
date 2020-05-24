@@ -18,10 +18,15 @@ class RowLearn extends React.Component {
     // }
 
     render() {
+        let MyPass = 0;
+        this.props.DataLearn.forEach(element => {
+            if (element.status.totalTrue == element.status.openedTrue && element.status.openedFalse == 0) MyPass += 1;
+        });
+
         return (
             <TouchableOpacity
-                //onPress={this.props.Press}
-                onPress={() => { this.props.dispatch({ type: 'add', id: this.props.element.id }) }}
+                onPress={this.props.Press}
+            // onPress={() => { this.props.dispatch({ type: 'add', id: this.props.element.id }) }}
             >
                 <View style={styles.row}>
 
@@ -48,14 +53,15 @@ class RowLearn extends React.Component {
 
                         <Text style={styles.pass}>
                             {/* {this.state.pass + "/" + this.props.element.number} */}
-                            {this.props.element.passed + "/" + this.props.element.total}
+                            {/* {this.props.element.passed + "/" + this.props.element.total} */}
+                            {MyPass + "/" + this.props.element.total}
 
                         </Text>
 
                         <ProgressBarAndroid style={styles.progress}
                             styleAttr="Horizontal"
                             indeterminate={false}
-                            progress={this.props.element.passed / this.props.element.total}
+                            progress={MyPass / this.props.element.total}
                             color={"#66BB6A"}
                         />
                     </View>
@@ -65,11 +71,11 @@ class RowLearn extends React.Component {
     }
 }
 
-// function mapStateToProps(state) {
-//     return { MyPass: state.Learns }
-// }
+function mapStateToProps(state) {
+    return { DataLearn: state.DataLearn }
+}
 
-export default connect()(RowLearn);
+export default connect(mapStateToProps)(RowLearn);
 
 
 

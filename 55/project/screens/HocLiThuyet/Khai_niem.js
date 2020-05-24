@@ -76,13 +76,101 @@ const data = [
     }
 ]
 
+const data1 = [
+    {
+        id: '1',
+        question: 'Khái niệm "phần đường xe chạy" được hiểu như thế nào là đúng?',
+        answer: [
+            {
+                key: '1',
+                text: 'Là phần đường bộ được sử dụng cho các phương tiện giao thông qua lại.',
+                correct: true,
+                opened: false,
+            },
+            {
+                key: '2',
+                text: 'Là phần đường bộ được sử dụng cho các phương tiện giao thông qua lại, dải đất dọc hai bên đường để đảm bảo an toàn giao thông.',
+                correct: false,
+                opened: false,
+            },
+            {
+                key: '3',
+                text: 'Là phần đường bộ được sử dụng cho các phương tiện giao thông qua lại, các công trình, thiết bị phụ trợ khác và dải đất dọc hai bên đường để đảm bảo an toàn giao thông.',
+                correct: false,
+                opened: false,
+            }
+        ],
+        passed: false,
+    },
+    {
+        id: '2',
+        question: '"Vạch kẻ đường" được hiểu như thế nào là đúng?',
+        answer: [
+            {
+                key: '1',
+                text: 'Vạch kẻ đường là vạch chỉ sự phân chia làn đường, vị trí hoặc hướng đi, vị trí dừng lại.',
+                correct: true,
+                opened: false,
+            },
+            {
+                key: '2',
+                text: 'Vạch kẻ đường là vạch chỉ sự phân biệt vị trí dừng, đỗ trên đường.',
+                correct: false,
+                opened: false,
+            },
+            {
+                key: '3',
+                text: 'Tất cả các ý trên.',
+                correct: false,
+                opened: false,
+            }
+        ],
+        passed: false,
+    },
+    {
+        id: '3',
+        question: '"Vạch kẻ đường" được hiểu như thế nào là đúng?',
+        answer: [
+            {
+                key: '1',
+                text: 'Vạch kẻ đường là vạch chỉ sự phân chia làn đường, vị trí hoặc hướng đi, vị trí dừng lại.',
+                correct: true,
+                opened: false,
+            },
+            {
+                key: '2',
+                text: 'Vạch kẻ đường là vạch chỉ sự phân biệt vị trí dừng, đỗ trên đường.',
+                correct: false,
+                opened: false,
+            },
+            {
+                key: '3',
+                text: 'Tất cả các ý trên.',
+                correct: false,
+                opened: false,
+            }
+        ],
+        passed: false,
+    },
+]
+
 const { width, height } = Dimensions.get('window');
 
 class Khai_niem extends React.Component {
 
+    constructor(props) {
+        super(props);
+    }
+
+    componentDidMount() {
+
+    }
+
     render() {
-        // const {navigation} = this.props;
-        // const type = navigation.getParam('type', '1')
+        // const { navigation } = this.props;
+        const { type } = this.props.route.params;
+        console.log("Type là: " + type);
+
 
         return (
             <FlatList
@@ -91,9 +179,9 @@ class Khai_niem extends React.Component {
                 pagingEnabled={true}
                 showsHorizontalScrollIndicator={false}
 
-                data={this.props.KhaiNiem}
+                data={this.props.DataLearn}
+                keyExtractor={item => item.id}
 
-                keyExtractor={(item, index) => index.toString()}
                 renderItem={({ item, index }) => {
                     return (
                         // <View>
@@ -124,7 +212,7 @@ class Khai_niem extends React.Component {
 
                         // </View>
 
-                        <QuestionScreen questionNumber={index} element={item} total={this.props.KhaiNiem.length} passed={item.passed} />
+                        <QuestionScreen questionNumber={index + 1} element={item} total={this.props.DataLearn.length} passed={item.passed} />
 
                     )
                 }}
@@ -136,10 +224,14 @@ class Khai_niem extends React.Component {
 }
 
 function mapStateToProps(state) {
-    return { KhaiNiem: state.KhaiNiem }
+    return {
+        DataLearn: state.DataLearn,
+        textstate: state.chien,
+    }
 }
 
 export default connect(mapStateToProps)(Khai_niem);
+
 
 const styles = StyleSheet.create({
     container: {

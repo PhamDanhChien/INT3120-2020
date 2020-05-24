@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Text, View, StyleSheet } from 'react-native';
+import { Text, View, StyleSheet, Alert } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { connect } from 'react-redux';
@@ -8,19 +8,23 @@ import { connect } from 'react-redux';
 class Answer extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {
-            opened: this.props.KhaiNiem[this.props.questionNumber].answer[this.props.number - 1].opened,
-        }
+        // this.state = {
+        //     opened: this.props.KhaiNiem[this.props.questionNumber - 1].answer[this.props.number - 1].opened,
+        // }
+        // let { questionNumber, answerNumber } = this.props;
     }
 
+
     Toggle = () => {
-        this.props.dispatch({ type: 'toggleAnswer', questionNumber: 1, answerNumber: 1 })
+        let { questionNumber, answerNumber } = this.props;
+        this.props.dispatch({ type: 'toggleAnswer', questionNumber: questionNumber, answerNumber: answerNumber });
+
     }
 
     render() {
         let AnswerStyle = [styles.answerText], CircleStyle = [styles.circle], NumberStyle = [styles.number], check = null;
 
-        if (this.state.opened) {
+        if (this.props.DataLearn[this.props.questionNumber - 1].answer[this.props.answerNumber - 1].opened) {
             NumberStyle = [styles.number, styles.numberOpened];
 
             if (this.props.correct) {
@@ -37,14 +41,15 @@ class Answer extends React.Component {
 
         return (
             <TouchableOpacity
-            //onPress={this.props.dispatch({ type: 'toggleAnswer', questionNumber: 1, answerNumber: 1 })}
+                // this.props.dispatch({ type: 'toggleAnswer', questionNumber: 1, answerNumber: 1 })
+                onPress={this.Toggle}
             >
                 <View style={styles.answer}>
 
                     <View style={styles.left}>
                         <View style={CircleStyle}>
                             <Text style={NumberStyle}>
-                                {this.props.number}
+                                {this.props.answerNumber}
                             </Text>
                         </View>
                     </View>
@@ -65,7 +70,7 @@ class Answer extends React.Component {
 }
 
 function mapStateToProps(state) {
-    return { KhaiNiem: state.KhaiNiem }
+    return { DataLearn: state.DataLearn }
 }
 
 export default connect(mapStateToProps)(Answer);

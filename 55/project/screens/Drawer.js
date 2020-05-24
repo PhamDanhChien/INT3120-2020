@@ -1,11 +1,13 @@
 import * as React from 'react';
-import { Button, View, Image, Text, StatusBar } from 'react-native';
-import { createDrawerNavigator, DrawerItem, DrawerContentScrollView } from '@react-navigation/drawer';
+import { Button, View, Image, Dimensions } from 'react-native';
+import { createDrawerNavigator, DrawerItem, DrawerContentScrollView, DrawerItemList } from '@react-navigation/drawer';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
-
 
 import StackScreen from './Stack';
 import Help from './Help';
+
+const { width } = Dimensions.get('window');
+const DrawerWidth = 7.5 / 10 * width;
 
 function HomeScreen({ navigation }) {
     return (
@@ -26,90 +28,60 @@ function Usage({ navigation }) {
     );
 }
 
-function CustomDrawerContent(props) {
-
-    return (
-        <DrawerContentScrollView {...props}
-
-            drawerStyle={{
-                height: 100,
-            }}
-            drawerContentOptions={{
-                labelStyle: {
-                    color: "red"
-                }
-            }}
-        >
-
+const CustomDrawerContent = (props) => (
+    <DrawerContentScrollView {...props}>
+        <View style={{ flex: 1 }}>
 
             <Image
                 resizeMode="cover"
                 source={require("../images/home/image_drawer_top.jpg")}
-                style={{ height: 200, width: "100%", marginTop: -40 }}
+                style={{ height: 180, width: "100%", marginTop: -40, marginBottom: 5 }}
             />
 
-            <DrawerItem
-                label='Học, học nữa, học mãi!'
-                labelStyle={{ color: "green", fontWeight: "bold" }}
-                onPress={() => props.navigation.navigate('Stack')}
-                icon={() => <Icon size={25} color='green' name='car' />}
-            />
-
-            <DrawerItem
-                label='Mà vẫn dốt...'
-                onPress={() => props.navigation.navigate('Help')}
-                icon={() => <Icon size={25} color='gray' name='help-circle-outline' />}
-            />
-
-        </DrawerContentScrollView>
-    );
-}
+            <DrawerItemList {...props} />
+        </View>
+    </DrawerContentScrollView>
+)
 
 
 const Drawer = createDrawerNavigator();
 
-
 export default class MyDrawer extends React.Component {
-
-    constructor(props) {
-        super(props);
-    }
 
     render() {
         const { navigation } = this.props;
         return (
 
             <Drawer.Navigator
-
                 initialRouteName="Home"
-                // hideStatusBar={true}
-
                 drawerContent={(props) => <CustomDrawerContent {...props} />}
-
-
                 drawerStyle={{
-                    // backgroundColor: "red",
-                    width: 320,
+                    width: DrawerWidth,
                 }}
-
                 drawerContentOptions={{
-
-                    activeTintColor: "green",
-                    activeBackgroundColor: "#eee",
-                    // labelStyle: {
-                    //     color: "green",
-                    // },
-                    // itemStyle: {
-                    //     // height: 200,
-                    //     // backgroundColor: "yellow",
-                    // },
-
+                    activeTintColor: "#66BB6A",
+                    labelStyle: {
+                        fontSize: 15,
+                        fontWeight: 'bold',
+                    }
                 }}
+
             >
 
+                <Drawer.Screen name="Stack" component={StackScreen}
+                    options={{
+                        title: 'Học thi bằng lái xe',
+                        drawerIcon: (color) => <Icon size={25} color='#66BB6A' name='car' />,
+                    }}
+                />
 
-                <Drawer.Screen name="Stack" component={StackScreen} />
-                <Drawer.Screen name="Help" component={Help} />
+                <Drawer.Screen name="Help" component={Help}
+                    options={{
+                        title: 'Hướng dẫn sử dụng',
+                        drawerIcon: (color) => <Icon size={25} color='#66BB6A' name='help-circle-outline' />,
+                    }}
+                />
+
             </Drawer.Navigator>
 
         );

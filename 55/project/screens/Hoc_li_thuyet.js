@@ -35,13 +35,15 @@ const dataHoc = [
 class Hoc_li_thuyet extends React.Component {
 
     render() {
+        const { navigation } = this.props;
+
         return (
             <FlatList style={styles.container}
                 data={this.props.Learns}
                 keyExtractor={item => item.id.toString()}
-                renderItem={({ item }) => {
+                renderItem={({ item, index }) => {
                     return (
-                        <RowLearn element={item} Press={() => navigation.navigate('Khai_niem')} />
+                        <RowLearn element={item} Press={() => navigation.navigate('Khai_niem', { type: index })} />
                     )
                 }}
             >

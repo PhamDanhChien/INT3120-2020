@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { Provider } from 'react-redux';
-import { PersistGate } from 'redux-persist/lib/integration/react';
-import { persistor, store } from './data/Store';
+import { PersistGate } from 'redux-persist/lib/integration/react'
+import { persistor, store } from './redux/Store';
 
 import MyDrawer from './screens/Drawer';
 

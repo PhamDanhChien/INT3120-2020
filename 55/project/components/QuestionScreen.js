@@ -31,10 +31,10 @@ class QuestionScreen extends React.Component {
                             keyExtractor={(item, index) => index.toString()}
                             renderItem={({ item, index }) => {
 
-                                // if (item.correct) this.setState({ totalCorrect: this.setState.totalCorrect + 1 })
+                                // if (item.correct) this.setState({ totalCorrect: this.state.totalCorrect + 1 })
 
                                 return (
-                                    <Answer questionNumber={this.props.questionNumber} number={index + 1} answer={item.text} correct={item.correct} />
+                                    <Answer questionNumber={this.props.questionNumber} answerNumber={index + 1} answer={item.text} correct={item.correct} />
                                 )
                             }}
                         >
