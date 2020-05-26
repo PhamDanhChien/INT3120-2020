@@ -173,14 +173,13 @@ class StackScreen extends React.Component {
                 <Stack.Screen
                     name="Khai_niem"
                     component={Khai_niem}
+                    options={({ route }) => ({ title: route.params.title })}
                 />
 
                 <Stack.Screen
                     name="Help"
                     component={Help}
-                    options={{
-                        title: "Hướng dẫn sử dụng"
-                    }}
+                    options={({ route }) => ({ title: route.params.title })}
                 />
 
                 <Stack.Screen

@@ -7,11 +7,11 @@ export class CellHome extends React.Component {
         return (
             // <Text> huhu </Text>
             <View style={styles.cell}>
-                <TouchableOpacity
-                    onPress={this.props.Press}
-                >
+                <TouchableOpacity onPress={this.props.Press}>
 
-                    <View>
+                    <View style={{
+                        borderRadius: 10, backgroundColor: "green", borderWidth: 2, borderColor: "green",
+                    }}>
                         <Image
                             resizeMode="stretch"
                             source={this.props.img}
@@ -32,28 +32,22 @@ const b = 45 / 100 * width;
 const styles = StyleSheet.create({
 
     cell: {
-        // width: b,
-        // height: a,
         flex: 1,
-
-        // borderColor: "#ECAB53",
-        // borderWidth: 1,
         justifyContent: "center",
         alignItems: 'center',
-        // backgroundColor: "blue",
-        // borderWidth: 1,
+        borderRadius: 10,
 
-        // elevation: 5,
     },
 
     icon: {
         width: b,
         height: a,
+
+
+        // borderTopRightRadius: 20,
+        // borderTopLeftRadius: 20,
+        // borderTopEndRadius: 20,
         borderRadius: 10,
-
-        // borderTopRightRadius: 60,
-        // borderBottomLeftRadius: 60,
-
     },
 
 });

@@ -1,8 +1,11 @@
 import * as React from 'react';
 import { Text, View, StyleSheet } from 'react-native';
-import { ScrollView } from 'react-native-gesture-handler';
+import { createStackNavigator } from '@react-navigation/stack';
+import { ScrollView, TouchableOpacity } from 'react-native-gesture-handler';
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 import Header from '../components/Header';
+import { NavigationContainer } from '@react-navigation/native';
 
 
 const dataHelp = {
@@ -23,13 +26,13 @@ const dataHelp = {
     Text6: 'Chúc bạn thi đỗ với số điểm tối đa!'
 }
 
-export default class Help extends React.Component {
+class HelpScreen extends React.Component {
     render() {
         return (
 
             <View style={styles.container}>
 
-                <Header title='Hướng dẫn sử dụng' />
+                {/* <Header title='Hướng dẫn sử dụng' /> */}
 
                 <ScrollView>
                     <Text style={styles.text1}>{dataHelp.Text1}</Text>
@@ -42,6 +45,41 @@ export default class Help extends React.Component {
             </View>
 
         )
+    }
+}
+
+const Stack = createStackNavigator();
+export default class Help extends React.Component {
+    constructor(props) {
+        super(props);
+    }
+
+    render() {
+        const { navigation } = this.props;
+        return (
+            <Stack.Navigator
+                screenOptions={{
+                    headerTintColor: "white",
+                    headerStyle: {
+                        backgroundColor: "#66BB6A"
+                    },
+                }}
+            >
+                <Stack.Screen
+                    name="Help"
+                    component={HelpScreen}
+                    options={{
+                        title: "Hướng dẫn sử dụng",
+                        headerLeft: () => (
+                            <TouchableOpacity onPress={() => navigation.goBack()}>
+                                <Icon style={{ marginLeft: 20 }} size={25} color="white" name='arrow-left' />
+                            </TouchableOpacity>
+                        )
+                    }}
+                />
+            </Stack.Navigator>
+        )
+
     }
 }
 
@@ -65,7 +103,7 @@ const styles = StyleSheet.create({
     text3: {
         fontSize: 18,
         fontWeight: "bold",
-        color: "green",
+        color: "#66BB6A",
         margin: 10,
     }
 })

@@ -13,7 +13,6 @@ export class RowBoard extends React.Component {
                     <View style={styles.left}>
                         <Image
                             style={styles.image}
-                            // source={this.props.element.img}
                             source={this.props.element.img}
                         />
                     </View>

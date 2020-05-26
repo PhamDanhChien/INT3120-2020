@@ -16,7 +16,7 @@ const dataHome = {
 export default function Home({ navigation }) {
 
     function MyNavigate(desScreen) {
-        navigation.navigate(desScreen, { type: 'data2' });
+        navigation.navigate(desScreen, { title: "chien dai ca" });
     };
 
     return (
@@ -50,7 +50,7 @@ export default function Home({ navigation }) {
 
                 <View style={styles.row}>
                     <CellHome img={dataHome.img5} Press={() => MyNavigate("Tra_cuu_luat")} />
-                    <CellHome img={dataHome.img6} Press={() => MyNavigate("Khai_niem")} />
+                    <CellHome img={dataHome.img6} Press={() => MyNavigate("Help")} />
                 </View>
 
             </View>

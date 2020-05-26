@@ -43,7 +43,11 @@ class Hoc_li_thuyet extends React.Component {
                 keyExtractor={item => item.id.toString()}
                 renderItem={({ item, index }) => {
                     return (
-                        <RowLearn element={item} Press={() => navigation.navigate('Khai_niem', { type: index })} />
+                        <RowLearn
+                            element={item}
+                            type={index}
+                            Press={() => navigation.navigate('Khai_niem', { typeLearn: index + 1, title: item.name })}
+                        />
                     )
                 }}
             >

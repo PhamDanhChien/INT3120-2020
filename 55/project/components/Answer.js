@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Text, View, StyleSheet, Alert } from 'react-native';
+import { Text, View, StyleSheet } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { connect } from 'react-redux';
@@ -8,41 +8,37 @@ import { connect } from 'react-redux';
 class Answer extends React.Component {
     constructor(props) {
         super(props);
-        // this.state = {
-        //     opened: this.props.KhaiNiem[this.props.questionNumber - 1].answer[this.props.number - 1].opened,
-        // }
-        // let { questionNumber, answerNumber } = this.props;
     }
 
-
-    Toggle = () => {
-        let { questionNumber, answerNumber } = this.props;
-        this.props.dispatch({ type: 'toggleAnswer', questionNumber: questionNumber, answerNumber: answerNumber });
+    toggleAnswer = () => {
+        let { typeLearn, questionNumber, answerNumber } = this.props;
+        this.props.dispatch({ type: 'toggleAnswer', typeLearn: typeLearn, questionNumber: questionNumber, answerNumber: answerNumber });
 
     }
 
     render() {
-        let AnswerStyle = [styles.answerText], CircleStyle = [styles.circle], NumberStyle = [styles.number], check = null;
+        let { typeLearn } = this.props;
+        let AnswerStyle = [styles.answerText], CircleStyle = [styles.circle], NumberStyle = [styles.number], CheckIcon = null;
 
-        if (this.props.DataLearn[this.props.questionNumber - 1].answer[this.props.answerNumber - 1].opened) {
+        if (this.props.Learns[typeLearn - 1].data[this.props.questionNumber - 1].answer[this.props.answerNumber - 1].opened) {
             NumberStyle = [styles.number, styles.numberOpened];
 
             if (this.props.correct) {
                 AnswerStyle = [styles.answerText, styles.answerTextOpenedTrue];
                 CircleStyle = [styles.circle, styles.circleOpenedTrue];
-                check = <Icon style={{ color: 'green' }} size={30} name='check' />
+                CheckIcon = <Icon style={{ color: 'green' }} size={30} name='check' />
             }
             else {
                 AnswerStyle = [styles.answerText, styles.answerTextOpenedFalse];
                 CircleStyle = [styles.circle, styles.circleOpenedFalse];
-                check = <Icon style={{ color: "red" }} size={30} name='close' />
+                CheckIcon = <Icon style={{ color: "red" }} size={30} name='close' />
             }
         }
 
         return (
             <TouchableOpacity
                 // this.props.dispatch({ type: 'toggleAnswer', questionNumber: 1, answerNumber: 1 })
-                onPress={this.Toggle}
+                onPress={this.toggleAnswer}
             >
                 <View style={styles.answer}>
 
@@ -60,7 +56,7 @@ class Answer extends React.Component {
                     </Text>
 
                     <View style={styles.right}>
-                        {check}
+                        {CheckIcon}
                     </View>
 
                 </View>
@@ -70,7 +66,7 @@ class Answer extends React.Component {
 }
 
 function mapStateToProps(state) {
-    return { DataLearn: state.DataLearn }
+    return { Learns: state.Learns }
 }
 
 export default connect(mapStateToProps)(Answer);

@@ -18,8 +18,9 @@ class RowLearn extends React.Component {
     // }
 
     render() {
+
         let MyPass = 0;
-        this.props.DataLearn.forEach(element => {
+        this.props.Learns[this.props.type].data.forEach(element => {
             if (element.status.totalTrue == element.status.openedTrue && element.status.openedFalse == 0) MyPass += 1;
         });
 
@@ -44,7 +45,7 @@ class RowLearn extends React.Component {
                     <View style={styles.right}>
 
                         <Text style={styles.tit}>
-                            {this.props.element.name}
+                            {this.props.element.name.toUpperCase()}
                         </Text>
 
                         <Text style={styles.socau}>
@@ -52,10 +53,7 @@ class RowLearn extends React.Component {
                         </Text>
 
                         <Text style={styles.pass}>
-                            {/* {this.state.pass + "/" + this.props.element.number} */}
-                            {/* {this.props.element.passed + "/" + this.props.element.total} */}
                             {MyPass + "/" + this.props.element.total}
-
                         </Text>
 
                         <ProgressBarAndroid style={styles.progress}
@@ -72,7 +70,7 @@ class RowLearn extends React.Component {
 }
 
 function mapStateToProps(state) {
-    return { DataLearn: state.DataLearn }
+    return { Learns: state.Learns }
 }
 
 export default connect(mapStateToProps)(RowLearn);

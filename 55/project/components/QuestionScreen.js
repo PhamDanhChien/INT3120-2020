@@ -34,7 +34,13 @@ class QuestionScreen extends React.Component {
                                 // if (item.correct) this.setState({ totalCorrect: this.state.totalCorrect + 1 })
 
                                 return (
-                                    <Answer questionNumber={this.props.questionNumber} answerNumber={index + 1} answer={item.text} correct={item.correct} />
+                                    <Answer
+                                        typeLearn={this.props.typeLearn}
+                                        questionNumber={this.props.questionNumber}
+                                        answerNumber={index + 1}
+                                        answer={item.text}
+                                        correct={item.correct}
+                                    />
                                 )
                             }}
                         >

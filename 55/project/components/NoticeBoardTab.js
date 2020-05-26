@@ -2,7 +2,7 @@ import * as React from 'react';
 import { StyleSheet } from "react-native";
 
 import { FlatList } from 'react-native-gesture-handler';
-import { RowBoard } from './/RowBoard';
+import { RowBoard } from './RowBoard';
 
 
 export default class NoticeBoardTab extends React.Component {

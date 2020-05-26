@@ -6,15 +6,11 @@ import { connect } from 'react-redux';
 
 class PresentQuestion extends React.Component {
 
-    // onAdd() {
-    //     this.props.dispatch({ type = 'add' })
-    // }
-
 
     render() {
         return (
             <View style={styles.present}>
-                <TouchableOpacity>
+                <TouchableOpacity onPress={this.props.back}>
                     <Image
                         style={styles.arrow}
                         source={require("../images/arrow/left_arrow.png")}

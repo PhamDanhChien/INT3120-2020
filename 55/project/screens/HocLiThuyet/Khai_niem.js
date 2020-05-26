@@ -168,8 +168,7 @@ class Khai_niem extends React.Component {
 
     render() {
         // const { navigation } = this.props;
-        const { type } = this.props.route.params;
-        console.log("Type là: " + type);
+        const { typeLearn } = this.props.route.params;
 
 
         return (
@@ -179,7 +178,7 @@ class Khai_niem extends React.Component {
                 pagingEnabled={true}
                 showsHorizontalScrollIndicator={false}
 
-                data={this.props.DataLearn}
+                data={this.props.Learns[typeLearn - 1].data}
                 keyExtractor={item => item.id}
 
                 renderItem={({ item, index }) => {
@@ -212,7 +211,13 @@ class Khai_niem extends React.Component {
 
                         // </View>
 
-                        <QuestionScreen questionNumber={index + 1} element={item} total={this.props.DataLearn.length} passed={item.passed} />
+                        <QuestionScreen
+                            typeLearn={typeLearn}
+                            questionNumber={index + 1}
+                            element={item}
+                            total={this.props.Learns[typeLearn - 1].data.length}
+                            passed={item.passed}
+                        />
 
                     )
                 }}
@@ -225,8 +230,7 @@ class Khai_niem extends React.Component {
 
 function mapStateToProps(state) {
     return {
-        DataLearn: state.DataLearn,
-        textstate: state.chien,
+        Learns: state.Learns,
     }
 }
 
