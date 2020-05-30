@@ -5,7 +5,6 @@ import TabBarOptions from '../style/TabBarOptions';
 
 //Comment
 
-
 const data = {
     dataCam: [
         {
@@ -117,6 +116,63 @@ const data = {
             name: 'Chỗ ngoặt nguy hiểm vòng bên phải',
             text: 'Báo trước sắp đến chỗ ngoặt nguy hiểm vòng bên phải.'
         },
+    ],
+
+    dataBienBaoChiDan: [
+        {
+            id: '1',
+            img: require('../images/bien_bao_chi_dan/1.jpg'),
+            name: 'Mũi tên chỉ đường đi',
+            text: ''
+        },
+        {
+            id: '2',
+            img: require('../images/bien_bao_chi_dan/2.jpg'),
+            name: 'Lối đi đường vòng tránh',
+            text: ''
+        },
+        {
+            id: '3',
+            img: require('../images/bien_bao_chi_dan/3.jpg'),
+            name: 'Hết khu vực nội thành',
+            text: ''
+        },
+        {
+            id: '4',
+            img: require('../images/bien_bao_chi_dan/4.jpg'),
+            name: 'Cầu vượt cho người đi bộ',
+            text: ''
+        },
+        {
+            id: '5',
+            img: require('../images/bien_bao_chi_dan/5.jpg'),
+            name: 'Đường cụt',
+            text: 'Để chỉ lối rẽ vào đường cụt'
+        },
+        {
+            id: '6',
+            img: require('../images/bien_bao_chi_dan/6.jpg'),
+            name: 'Nơi nghỉ mát',
+            text: 'Để chỉ dẫn những nơi nghỉ mát'
+        },
+        {
+            id: '7',
+            img: require('../images/bien_bao_chi_dan/7.jpg'),
+            name: 'Rẽ ra đường có làn đường dành cho ôtô khách',
+            text: 'Để chỉ dẫn cho người lái xe biết ở ngã ba, ngã tư rẽ phải là rẽ ra đường có làn đường dành cho ôtô khách'
+        },
+        {
+            id: '8',
+            img: require('../images/bien_bao_chi_dan/8.jpg'),
+            name: 'Chỉ hướng đường',
+            text: 'Đặt ở tất cả các ngã ba, ngã tư đường giao nhau để chỉ dẫn có một khu đông dân cư trên hướng đường đến'
+        },
+    ],
+
+    dataVachKeDuong: [
+        {
+            
+        }
     ]
 }
 
@@ -133,6 +189,7 @@ export default class Bien_bao extends React.Component {
                 <Tab.Screen name='BIỂN BÁO HIỆU LỆNH' component={Hieu_lenh} />
                 <Tab.Screen name='BIỂN BÁO NGUY HIỂM' component={Nguy_hiem} />
                 <Tab.Screen name='BIỂN BÁO PHỤ' component={Phu} />
+                <Tab.Screen name='BIỂN BÁO CHỈ DẪN' component={BienBaoChiDan} />
             </Tab.Navigator>
         )
     }
@@ -160,6 +217,12 @@ export function Nguy_hiem() {
 export function Phu() {
     return (
         <NoticeBoardTab data={data.dataDanger} />
+    )
+}
+
+export function BienBaoChiDan(){
+    return (
+        <NoticeBoardTab data={data.dataBienBaoChiDan} />
     )
 }
 
