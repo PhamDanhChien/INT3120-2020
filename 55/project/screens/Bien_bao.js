@@ -3,6 +3,8 @@ import { createMaterialTopTabNavigator } from '@react-navigation/material-top-ta
 import NoticeBoardTab from '../components/NoticeBoardTab';
 import TabBarOptions from '../style/TabBarOptions';
 
+//Comment
+
 
 const data = {
     dataCam: [
