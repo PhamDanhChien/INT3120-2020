@@ -8,10 +8,8 @@ const TabBarOptions = {
     },
     labelStyle: {
         paddingVertical: 7,
-        width: 155,
+        width: 150,
         fontWeight: "bold",
-        backgroundColor: "#008B00",
-        borderRadius: 15,
     },
     pressColor: "white",
     indicatorStyle: {

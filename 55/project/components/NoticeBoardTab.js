@@ -29,4 +29,13 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: "#ccc",
     },
+    wrapper: {
+        flex: 1,
+        flexDirection: "row",
+        justifyContent: "center",
+        alignItems: "center"
+    },
+    item: {
+        padding: 5
+    }
 })
