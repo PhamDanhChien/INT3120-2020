@@ -1,9 +1,9 @@
 import * as React from 'react';
-import { Text, View, Dimensions, StyleSheet } from 'react-native';
+import { Dimensions, StyleSheet } from 'react-native';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
-import { ScrollView, FlatList } from 'react-native-gesture-handler';
+import { FlatList } from 'react-native-gesture-handler';
 import { CellSearch } from '../components/CellSearch';
-import TabBarOptions from '../style/TabBarOptions';
+import TabBarOptions from '../styles/TabBarOptions';
 
 
 var dataMoto = [
@@ -72,31 +72,6 @@ export class Moto extends React.Component {
         const { navigation } = this.props;
 
         return (
-            // <ScrollView style={styles.container}>
-            //     <View style={styles.row}>
-            //         <CellSearch element={dataMoto[0]} />
-            //         <CellSearch element={dataMoto[1]} />
-            //         <CellSearch element={dataMoto[2]} />
-            //     </View>
-
-            //     <View style={styles.row}>
-            //         <CellSearch element={dataMoto[3]} />
-            //         <CellSearch element={dataMoto[4]} />
-            //         <CellSearch element={dataMoto[5]} />
-            //     </View>
-
-            //     <View style={styles.row}>
-            //         <CellSearch element={dataMoto[6]} />
-            //         <CellSearch element={dataMoto[7]} />
-            //         <CellSearch element={dataMoto[8]} />
-            //     </View>
-
-            //     <View style={styles.row}>
-            //         <CellSearch element={dataMoto[9]} />
-            //         <CellSearch element={dataMoto[10]} />
-            //     </View>
-            // </ScrollView>
-
             <FlatList style={styles.container}
                 data={dataMoto}
                 renderItem={({ item, index }) => {
@@ -134,7 +109,7 @@ export class Car extends React.Component {
 
 const Tab = createMaterialTopTabNavigator();
 
-export default function Tra_cuu_luat({ navigation }) {
+export default function SearchLaw({ navigation }) {
     return (
         <Tab.Navigator
             tabBarOptions={TabBarOptions}

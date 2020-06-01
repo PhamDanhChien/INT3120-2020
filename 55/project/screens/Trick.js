@@ -3,7 +3,7 @@ import { Text, StyleSheet } from 'react-native';
 import { FlatList } from 'react-native-gesture-handler';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 import { RowTrick } from '../components/RowTrick';
-import TabBarOptions from '../style/TabBarOptions';
+import TabBarOptions from '../styles/TabBarOptions';
 
 
 var dataLiThuyet = [
@@ -127,7 +127,7 @@ var dataThucHanh = [
 
 const Tab = createMaterialTopTabNavigator();
 
-export default function Meo_thi() {
+export default function Trick() {
     return (
         <Tab.Navigator
             tabBarOptions={TabBarOptions}

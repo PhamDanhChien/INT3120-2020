@@ -4,8 +4,6 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { ScrollView, TouchableOpacity } from 'react-native-gesture-handler';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
-import Header from '../components/Header';
-import { NavigationContainer } from '@react-navigation/native';
 
 
 const dataHelp = {
@@ -28,11 +26,10 @@ const dataHelp = {
 
 class HelpScreen extends React.Component {
     render() {
+        const { navigation } = this.props;
         return (
 
             <View style={styles.container}>
-
-                {/* <Header title='Hướng dẫn sử dụng' /> */}
 
                 <ScrollView>
                     <Text style={styles.text1}>{dataHelp.Text1}</Text>
@@ -41,6 +38,13 @@ class HelpScreen extends React.Component {
                     <Text style={styles.text2}>{dataHelp.Text4}</Text>
                     <Text style={styles.text2}>{dataHelp.Text5}</Text>
                     <Text style={styles.text3}>{dataHelp.Text6}</Text>
+
+                    <TouchableOpacity onPress={() => navigation.navigate('Home')}>
+                        <View style={styles.button}>
+                            <Text style={styles.buttonText}> Bắt đầu sử dụng </Text>
+                        </View>
+                    </TouchableOpacity>
+
                 </ScrollView>
             </View>
 
@@ -87,6 +91,7 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         justifyContent: "center",
+        marginTop: 50,
     },
 
     text1: {
@@ -105,5 +110,22 @@ const styles = StyleSheet.create({
         fontWeight: "bold",
         color: "#66BB6A",
         margin: 10,
+    },
+
+    button: {
+        width: 250,
+        height: 50,
+        marginTop: 20,
+        alignItems: "center",
+        alignSelf: "center",
+        justifyContent: "center",
+        borderRadius: 30,
+        backgroundColor: "#66AB6A",
+    },
+
+    buttonText: {
+        color: "white",
+        fontSize: 20,
+        // fontWeight: "bold"
     }
 })

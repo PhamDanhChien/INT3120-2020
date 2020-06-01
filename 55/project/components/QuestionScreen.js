@@ -6,6 +6,7 @@ import { connect } from 'react-redux';
 import Question from '../components/Question';
 import PresentQuestion from '../components/PresentQuestion';
 import Answer from '../components/Answer';
+import ExplainQuestion from '../components/ExplainQuestion';
 
 
 class QuestionScreen extends React.Component {
@@ -18,7 +19,7 @@ class QuestionScreen extends React.Component {
     }
 
     render() {
-        let gt = this.props.passed ? (<Text> Giải thích đáp án i </Text>) : null;
+        let gt = this.props.passed ? (<ExplainQuestion text={this.props.element.explain} />) : null;        ////dâdadsadada
 
         return (
             <View>
@@ -55,7 +56,8 @@ class QuestionScreen extends React.Component {
                     <PresentQuestion
                         number={this.props.element.id}
                         total={this.props.total}
-                        next={() => this.props.dispatch({ type: 'toggle', id: this.props.element.id })}
+                        next={this.props.next}
+                        back={this.props.back}
                     />
                 </View>
 

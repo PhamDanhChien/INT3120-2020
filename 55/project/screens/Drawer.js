@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { Button, View, Image, Dimensions } from 'react-native';
-import { createDrawerNavigator, DrawerItem, DrawerContentScrollView, DrawerItemList } from '@react-navigation/drawer';
+import { View, Image, Dimensions } from 'react-native';
+import { createDrawerNavigator, DrawerContentScrollView, DrawerItemList } from '@react-navigation/drawer';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 import StackScreen from './Stack';
@@ -9,24 +9,6 @@ import Help from './Help';
 const { width } = Dimensions.get('window');
 const DrawerWidth = 7.5 / 10 * width;
 
-function HomeScreen({ navigation }) {
-    return (
-        <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-            <Button
-                onPress={() => navigation.navigate('Notifications')}
-                title="Go to notifications"
-            />
-        </View>
-    );
-}
-
-function Usage({ navigation }) {
-    return (
-        <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-            <Button onPress={() => navigation.goBack()} title="Go back home" />
-        </View>
-    );
-}
 
 const CustomDrawerContent = (props) => (
     <DrawerContentScrollView {...props}>
@@ -68,7 +50,7 @@ export default class MyDrawer extends React.Component {
 
             >
 
-                <Drawer.Screen name="Stack" component={StackScreen}
+                <Drawer.Screen name="Home" component={StackScreen}
                     options={{
                         title: 'Học thi bằng lái xe',
                         drawerIcon: (color) => <Icon size={25} color='#66BB6A' name='car' />,
@@ -79,6 +61,20 @@ export default class MyDrawer extends React.Component {
                     options={{
                         title: 'Hướng dẫn sử dụng',
                         drawerIcon: (color) => <Icon size={25} color='#66BB6A' name='help-circle-outline' />,
+                    }}
+                />
+
+                <Drawer.Screen name="Email" component={Help}
+                    options={{
+                        title: 'Email hỗ trợ',
+                        drawerIcon: (color) => <Icon size={25} color='#66BB6A' name='email' />,
+                    }}
+                />
+
+                <Drawer.Screen name="Setting" component={Help}
+                    options={{
+                        title: 'Cài đặt',
+                        drawerIcon: (color) => <Icon size={25} color='#66BB6A' name='settings' />,
                     }}
                 />
 

@@ -1,28 +1,23 @@
 import * as React from 'react';
-import { Image, Alert, StatusBar } from 'react-native';
+import { Image, Alert } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 import { createStackNavigator } from '@react-navigation/stack';
-import { NavigationContainer } from '@react-navigation/native';
 import { connect } from 'react-redux';
 
 
-import Profile from './Profile';
-import { Man } from './Man';
 import Home from './Home';
-// import Menu from './Drawer';
-import { test } from './test';
-import Thi_sat_hach from './Thi_sat_hach';
-import Hoc_li_thuyet from './Hoc_li_thuyet';
-import Tra_cuu_luat from './Tra_cuu_luat';
-import Meo_thi from './Meo_thi';
-import Bien_bao from './Bien_bao';
+
+import Test from './Test';
+import Learn from './Learn';
+import SearchLaw from './SearchLaw';
+import Trick from './Trick';
+import Board from './Board';
 import Help from './Help';
-import { Anima } from './Anima';
-import Khai_niem from './HocLiThuyet/Khai_niem';
-import SearchLawDetail from './TraCuuLuat/SearchLawDetail';
-// import { Navigation } from 'react-native-navigation';
+import LearnConcept from './learn/LearnConcept';
+import SearchLawDetail from './searchLaw/SearchLawDetail';
+import { hide } from 'expo/build/launch/SplashScreen';
 
 
 
@@ -93,26 +88,8 @@ class StackScreen extends React.Component {
                 />
 
                 <Stack.Screen
-                    name="Profile"
-                    component={Profile}
-                    options={{
-                        title: "Ôn thi giấy phép lái xe adhakjd",
-                    }}
-                />
-
-                <Stack.Screen
-                    name="Man"
-                    component={Man}
-                />
-
-                <Stack.Screen
-                    name="test"
-                    component={test}
-                />
-
-                <Stack.Screen
                     name="Thi_sat_hach"
-                    component={Thi_sat_hach}
+                    component={Test}
                     options={{
                         title: "Thi sát hạch",
                     }}
@@ -120,7 +97,7 @@ class StackScreen extends React.Component {
 
                 <Stack.Screen
                     name="Hoc_li_thuyet"
-                    component={Hoc_li_thuyet}
+                    component={Learn}
                     options={{
                         title: "Học lí thuyết",
                         headerRight: () => (
@@ -137,7 +114,7 @@ class StackScreen extends React.Component {
 
                 <Stack.Screen
                     name="Bien_bao"
-                    component={Bien_bao}
+                    component={Board}
                     options={{
                         title: "Biển báo giao thông",
                         headerRight: () => (
@@ -151,7 +128,7 @@ class StackScreen extends React.Component {
 
                 <Stack.Screen
                     name="Tra_cuu_luat"
-                    component={Tra_cuu_luat}
+                    component={SearchLaw}
                     options={{
                         title: "Tra cứu luật",
                     }}
@@ -159,27 +136,30 @@ class StackScreen extends React.Component {
 
                 <Stack.Screen
                     name="Meo_thi"
-                    component={Meo_thi}
+                    component={Trick}
                     options={{
                         title: "Mẹo thi kết quả cao",
                     }}
                 />
 
                 <Stack.Screen
-                    name="Animated"
-                    component={Anima}
-                />
-
-                <Stack.Screen
-                    name="Khai_niem"
-                    component={Khai_niem}
-                    options={({ route }) => ({ title: route.params.title })}
+                    name="Concept"
+                    component={LearnConcept}
+                    options={({ route }) => ({
+                        title: route.params.title,
+                        headerRight: () => (
+                            <TouchableOpacity
+                                onPress={() => Alert.alert("Hiển thị bảng lựa chọn các câu hỏi")}>
+                                <Icon style={{ marginRight: 10, color: 'white' }} size={35} name='apps' />
+                            </TouchableOpacity>
+                        )
+                    })}
                 />
 
                 <Stack.Screen
                     name="Help"
                     component={Help}
-                    options={({ route }) => ({ title: route.params.title })}
+                    options={{ header: hide }}
                 />
 
                 <Stack.Screen

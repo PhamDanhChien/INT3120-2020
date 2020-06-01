@@ -16,7 +16,7 @@ const dataHome = {
 export default function Home({ navigation }) {
 
     function MyNavigate(desScreen) {
-        navigation.navigate(desScreen, { title: "chien dai ca" });
+        navigation.navigate(desScreen);
     };
 
     return (

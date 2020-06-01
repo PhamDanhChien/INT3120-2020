@@ -1,6 +1,5 @@
 import * as React from 'react';
-import { View, Text, Alert } from 'react-native';
-import RowSearchlawDetail from '../../components/RowSearchLawDetail'
+import RowSearchLawDetail from '../../components/RowSearchLawDetail'
 import { FlatList } from 'react-native-gesture-handler';
 
 const dataMoto = [
@@ -121,7 +120,7 @@ export default function SearchLawDetail({ route }) {
             keyExtractor={(item) => item.id.toString()}
             renderItem={({ item }) => {
                 return (
-                    <RowSearchlawDetail element={item} />
+                    <RowSearchLawDetail element={item} />
                 )
             }}
         >

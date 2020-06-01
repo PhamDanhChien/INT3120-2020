@@ -25,10 +25,7 @@ class RowLearn extends React.Component {
         });
 
         return (
-            <TouchableOpacity
-                onPress={this.props.Press}
-            // onPress={() => { this.props.dispatch({ type: 'add', id: this.props.element.id }) }}
-            >
+            <TouchableOpacity onPress={this.props.Press} >
                 <View style={styles.row}>
 
                     <View styles={styles.left}>
@@ -70,7 +67,7 @@ class RowLearn extends React.Component {
 }
 
 function mapStateToProps(state) {
-    return { Learns: state.Learns }
+    return { Learns: state.Learn }
 }
 
 export default connect(mapStateToProps)(RowLearn);

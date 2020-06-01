@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 import NoticeBoardTab from '../components/NoticeBoardTab';
-import TabBarOptions from '../style/TabBarOptions';
+import TabBarOptions from '../styles/TabBarOptions';
 
 
 const data = {
@@ -120,7 +120,7 @@ const data = {
 
 const Tab = createMaterialTopTabNavigator();
 
-export default class Bien_bao extends React.Component {
+export default class Board extends React.Component {
     render() {
         return (
             <Tab.Navigator

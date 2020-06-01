@@ -1,125 +1,45 @@
 import * as React from 'react';
-import { StyleSheet, Text, View, Image, TouchableHighlight, Animated } from 'react-native';
+import { View, StyleSheet, ScrollView } from 'react-native';
+import { CellTest } from '../components/CellTest';
 
-class Panel extends React.Component {
-    constructor(props) {
-        super(props);
 
-        this.icons = {
-            'up': require('../images/arrow/down_arrow.png'),
-            'down': require('../images/arrow/up_arrow.png')
-        };
-
-        this.state = {
-            title: props.title,
-            expanded: true,
-            animation: new Animated.Value(40)
-        };
-    }
-
-    toggle() {
-        let initialValue = this.state.expanded ? this.state.maxHeight + this.state.minHeight : this.state.minHeight,
-            finalValue = !this.state.expanded ? this.state.minHeight : this.state.maxHeight + this.state.minHeight;
-
-        this.setState({
-            expanded: !this.state.expanded
-        });
-
-        // this.state.animation.setValue(initialValue);
-        Animated.spring(
-            this.state.animation,
-            {
-                toValue: finalValue
-            }
-        ).start();
-    }
-
-    _setMaxHeight(event) {
-        this.setState({
-            maxHeight: event.nativeEvent.layout.height
-        });
-    }
-
-    _setMinHeight(event) {
-        this.setState({
-            minHeight: event.nativeEvent.layout.height
-        });
-    }
-
-    render() {
-        let icon = this.icons['down'];
-
-        if (this.state.expanded) {
-            icon = this.icons['up'];
-        }
-
-        return (
-            <Animated.View
-                style={[styles.container, { height: this.state.animation }]}>
-
-                <View style={styles.titleContainer} onLayout={this._setMinHeight.bind(this)}>
-                    <Text style={styles.title}>{this.state.title}</Text>
-                    <TouchableHighlight
-                        style={styles.button}
-                        onPress={this.toggle.bind(this)}
-                        underlayColor="#f1f1f1">
-                        <Image
-                            style={styles.buttonImage}
-                            source={icon}
-                        ></Image>
-                    </TouchableHighlight>
-                </View>
-
-                <View style={styles.body} onLayout={this._setMaxHeight.bind(this)}>
-                    <Text> adada </Text>
-                    <Text> adada </Text>
-                    <Text> adada </Text>
-                    <Text> adada </Text>
-                    <Text> adada </Text>
-                    <Text> adada </Text>
-                    <Text> adada </Text>
-                    <Text> adadahjhjh </Text>
-                </View>
-
-            </Animated.View>
-        );
-    }
-}
-
-export function test() {
+export default function Test({ navigation }) {
     return (
-        <View style={{ flex: 1 }}>
-            <Panel title='testani' />
+        <ScrollView style={styles.container}>
 
-        </View>
+            <View style={styles.row}>
+                <CellTest progress='0/20 câu' de='Đề số 1' on_Press={() => navigation.navigate('Concept', { typeLearn: 1, title: "Thi sát hạch" })} />
+                <CellTest progress='0/20 câu' de='Đề số 2' on_Press={() => navigation.navigate('Concept', { typeLearn: 1, title: "Thi sát hạch" })} />
+                <CellTest progress='0/20 câu' de='Đề số 3' on_Press={() => navigation.navigate('Concept', { typeLearn: 1, title: "Thi sát hạch" })} />
+            </View>
+
+            <View style={styles.row}>
+                <CellTest progress='0/20 câu' de='Đề số 4' on_Press={() => navigation.navigate('Concept', { typeLearn: 1, title: "Thi sát hạch" })} />
+                <CellTest progress='0/20 câu' de='Đề số 5' on_Press={() => navigation.navigate('Concept', { typeLearn: 1, title: "Thi sát hạch" })} />
+                <CellTest progress='0/20 câu' de='Đề số 6' on_Press={() => navigation.navigate('Concept', { typeLearn: 1, title: "Thi sát hạch" })} />
+            </View>
+
+            <View style={styles.row}>
+                <CellTest progress='0/20 câu' de='Đề số 7' on_Press={() => navigation.navigate('Concept', { typeLearn: 1, title: "Thi sát hạch" })} />
+                <CellTest progress='0/20 câu' de='Đề số 8' on_Press={() => navigation.navigate('Concept', { typeLearn: 1, title: "Thi sát hạch" })} />
+                <CellTest progress='Ngẫu nhiên' de='TẠO ĐỀ' on_Press={() => navigation.navigate('Concept', { typeLearn: 1, title: "Thi sát hạch" })} />
+            </View>
+
+        </ScrollView>
     )
 }
 
-var styles = StyleSheet.create({
+
+const styles = StyleSheet.create({
     container: {
-        backgroundColor: '#fff',
-        margin: 10,
-        overflow: 'hidden',
-    },
-
-    titleContainer: {
-        flexDirection: 'row'
-    },
-    title: {
         flex: 1,
-        padding: 10,
-        color: '#2a2f43',
-        fontWeight: 'bold'
+        backgroundColor: "#fff",
     },
-    button: {
 
+    row: {
+        flexDirection: "row",
+        justifyContent: "space-evenly",
+        alignItems: "center",
     },
-    buttonImage: {
-        width: 30,
-        height: 25
-    },
-    body: {
-        padding: 10,
-        paddingTop: 0
-    }
-});
+
+})

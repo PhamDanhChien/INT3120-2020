@@ -66,7 +66,7 @@ class Answer extends React.Component {
 }
 
 function mapStateToProps(state) {
-    return { Learns: state.Learns }
+    return { Learns: state.Learn }
 }
 
 export default connect(mapStateToProps)(Answer);
