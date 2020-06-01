@@ -149,7 +149,7 @@ class StackScreen extends React.Component {
                         title: route.params.title,
                         headerRight: () => (
                             <TouchableOpacity
-                                onPress={() => Alert.alert("Hiển thị bảng lựa chọn các câu hỏi")}>
+                                onPress={() => Alert.alert("Tukky's App", "Hiển thị bảng lựa chọn các câu hỏi")}>
                                 <Icon style={{ marginRight: 10, color: 'white' }} size={35} name='apps' />
                             </TouchableOpacity>
                         )

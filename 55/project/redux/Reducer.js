@@ -21,7 +21,7 @@ const reducer = (state = defaultState, action) => {
 
         case 'reset-learn': return {
             ...state,
-            Learns: state.Learn.map(e => {
+            Learn: state.Learn.map(e => {
                 return {
                     ...e,
                     data: e.data.map(e1 => {
