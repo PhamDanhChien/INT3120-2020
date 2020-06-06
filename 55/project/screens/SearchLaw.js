@@ -109,7 +109,7 @@ export class Car extends React.Component {
 
 const Tab = createMaterialTopTabNavigator();
 
-export default function SearchLaw({ navigation }) {
+export default function SearchLaw() {
     return (
         <Tab.Navigator
             tabBarOptions={TabBarOptions}
@@ -122,17 +122,10 @@ export default function SearchLaw({ navigation }) {
 
 
 const { width } = Dimensions.get('window');
-const RowHeight = width / 3;
 
 const styles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: "#F5F5F5",
     },
-
-    // row: {
-    //     height: RowHeight,
-    //     marginTop: 10,
-    //     flexDirection: "row",
-    // },
 })

@@ -115,6 +115,42 @@ const data = {
             name: 'Chỗ ngoặt nguy hiểm vòng bên phải',
             text: 'Báo trước sắp đến chỗ ngoặt nguy hiểm vòng bên phải.'
         },
+        {
+            id: '3',
+            img: require('../images/bien_bao_nguy_hiem/3.jpg'),
+            name: 'Đường bị hẹp cả hai bên',
+            text: 'Báo trước sắp đến một đoạn đường bị hẹp đột ngột cả hai bên.'
+        },
+        {
+            id: '4',
+            img: require('../images/bien_bao_nguy_hiem/4.jpg'),
+            name: 'Đường bị hẹp về phía trái',
+            text: 'Báo trước sắp đến một đoạn đường bị hẹp đột ngột về phía trái.'
+        },
+        {
+            id: '5',
+            img: require('../images/bien_bao_nguy_hiem/5.jpg'),
+            name: 'Đường bị hẹp về phía phải',
+            text: 'Báo trước sắp đến một đoạn đường bị hẹp đột ngột về phía phải.'
+        },
+        {
+            id: '6',
+            img: require('../images/bien_bao_nguy_hiem/6.jpg'),
+            name: 'Đường giao nhau',
+            text: 'Báo trước nơi giao nhau có bố trí đảm bảo an toàn ở điểm giao, các loại xe qua điểm giao vòng trái, phải đi theo vòng xuyến qua đảo an toàn.'
+        },
+        {
+            id: '7',
+            img: require('../images/bien_bao_nguy_hiem/7.jpg'),
+            name: 'Giao nhau với đường không ưu tiên',
+            text: 'Trên đường ưu tiên, biển này để báo trước sắp đến nơi giao nhau với đường không ưu tiên.'
+        },
+        {
+            id: '8',
+            img: require('../images/bien_bao_nguy_hiem/8.jpg'),
+            name: 'Giao nhau với đường ưu tiên',
+            text: 'Trên đường không ưu tiên, biển này để báo trước sắp đến nơi giao nhau với đường ưu tiên.'
+        },
     ]
 }
 
@@ -157,7 +193,7 @@ export function Nguy_hiem() {
 
 export function Phu() {
     return (
-        <NoticeBoardTab data={data.dataDanger} />
+        <NoticeBoardTab data={data.dataLenh} />
     )
 }
 
